@@ -105,10 +105,10 @@ public class TitleContainer {
             FileWriter fw = new FileWriter(temp);
             while(reader.hasNextLine()) {
                 String line = reader.nextLine();
-                if (line.contains(selected.getTitle())) {
+                if (line.contains(title)) {
                     continue;
                 } else {
-                    fw.write(reader.nextLine() + "\n");
+                    fw.write(line + "\n");
                 }
             }
 
@@ -258,9 +258,12 @@ public class TitleContainer {
             if (t.contains(",")) {
                 t = '"' + t + '"';
             }
+            if (ct.contains(",")) {
+                ct = '"' + ct + '"';
+            }
 
             // s-- is the index, not tracked in this program. ... yet
-            fw.write("\ns--," + type + "," + t + "," + dir + "," + ct + "," + Integer.toString(yr) + "," + rat + "," + dur + "," + genre);
+            fw.write("s--," + type + "," + t + "," + dir + "," + ct + "," + Integer.toString(yr) + "," + rat + "," + dur + "," + genre);
             fw.close();
 
         } catch (IOException e) {
